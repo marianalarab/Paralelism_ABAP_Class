@@ -12,4 +12,57 @@ lcl_parallel_job_test_class -> Is the Unit Test Class
 <b>Other elements that needs to be created for this solution:</b>
 ZPARALLEL_CONTROL -> table where the parameters of the parallelism such as how many job can be executed at the same time and the package size. For example.
 
+@EndUserText.label : 'Parallelism Control'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #ALLOWED
+define table zparallel_control {
+  key mandt : mandt not null;
+  key repid : repid not null;
+  key vari  : variant not null;
+  inexec    : zexec;
+  msgty     : zmsgty;
+  pacsize   : zpacsize;
+  simul     : zsimul;
+  uname     : uname;
+  datum     : datum;
+  uzeit     : uzeit;
+
+}
+
+ZTT_JOBS -> Table type of the structure below to use as parameters type.
+
+@EndUserText.label : 'Jobs in process - Parallelism'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+define structure zlt_jobs {
+  jobname  : btcjob;
+  jobcount : btcjobcnt;
+  status   : btcstatus;
+
+}
+
+And Of course the custer table -> This should be copied from the INDX standard table.
+@EndUserText.label : 'Systemtabelle INDX'
+@AbapCatalog.enhancement.category : #NOT_CLASSIFIED
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.activationType : #ADAPT_C_STRUCTURES
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zparallel_cluster {
+  key mandt : mandt not null;
+  key relid : indx_relid not null;
+  key srtfd : indx_srtfd not null;
+  key srtf2 : indx_srtf2 not null;
+  loekz     : sychar01;
+  sperr     : sychar01;
+  aedat     : sydats;
+  usera     : username;
+  pgmid     : progname;
+  begdt     : sydats;
+  enddt     : sydats;
+  clustr    : indx_clstr;
+  clustd    : indx_clust;
+
+}
 
