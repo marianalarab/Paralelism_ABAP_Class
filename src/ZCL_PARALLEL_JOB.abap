@@ -144,11 +144,6 @@ CLASS ZCL_PARALLEL_JOB IMPLEMENTATION.
 
 
 METHOD get_available_jobs.
-************************************************************************
-* 8/13/23   smartShift project
-* TR Number: CAGK9C30AK
-
-************************************************************************
 
     TRY.
         DATA(control) = o_dao->get_customizing(
@@ -159,7 +154,7 @@ METHOD get_available_jobs.
         RAISE EXCEPTION exception.
     ENDTRY.
 
-    DATA(lines) = lines( it_jobs ).                                                              "$smart: #164
+    DATA(lines) = lines( it_jobs ).                                                              
     count = control-simul - lines.
 
   ENDMETHOD.
@@ -272,7 +267,7 @@ METHOD start_parallelism.
 
     DO.
 
-      DATA(lines) = lines( it_jobs ).                                                            "$smart: #164
+      DATA(lines) = lines( it_jobs ).                                                            
 
       LOOP AT it_sel_aux ASSIGNING FIELD-SYMBOL(<fl_sel>).
 
@@ -295,7 +290,7 @@ METHOD start_parallelism.
           CLEAR lv_count.
 
           me->check_jobs_inexecution( ).
-          lines = lines( it_jobs ).                                                              "$smart: #164
+          lines = lines( it_jobs ).                                                             
           EXIT.
 
         ELSEIF lines EQ control-simul.
@@ -321,8 +316,8 @@ METHOD start_parallelism.
         CLEAR lv_count.
 
         me->check_jobs_inexecution( ).
-        lines = lines( it_jobs ).                                                                "$smart: #164
-*        EXIT.
+        lines = lines( it_jobs ).                                                             
+
       ENDIF.
 
       "Remove the selection that is already in execution by the job started.
@@ -334,7 +329,7 @@ METHOD start_parallelism.
         WAIT UP TO 1 SECONDS.
 
         me->check_jobs_inexecution( ).
-        lines = lines( it_jobs ).                                                                "$smart: #164
+        lines = lines( it_jobs ).                                                             
 
       ENDWHILE.
 
@@ -348,7 +343,7 @@ METHOD start_parallelism.
       ELSEIF it_sel_aux IS INITIAL.
 
         me->check_jobs_inexecution( ).
-        lines = lines( it_jobs ).                                                                "$smart: #164
+        lines = lines( it_jobs ).                                                               
 
       ENDIF.
 
