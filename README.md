@@ -9,7 +9,8 @@ ZCL_PARALLEL_JOB_DAO.abap -> Is needed so the test class can work without access
 lcl_parallel_job_dao -> Is the local implementation of the DAO class that simulates de access to the database
 lcl_parallel_job_test_class -> Is the Unit Test Class
 
-<b>Other elements that needs to be created for this solution:</b>
+<b>Other elements that needs to be created for this solution:</b></n>
+
 ZPARALLEL_CONTROL -> table where the parameters of the parallelism such as how many job can be executed at the same time and the package size. For example.
 
 @EndUserText.label : 'Parallelism Control'
